@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example.hw</groupId>
+    <artifactId>spring-boot-board</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <!-- 부모격에 pom.xml을 상속받는다는 의미 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <!-- spring-boot-dependencies-[버젼정보].pom.xml로 이동하게 되는데
+         해당 파일에 spring framework에서 많이 사용되는 dependency들이 이미 작성되어 있음-->
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
+
+    <!-- 의존성 관리가 필요한 내용들을 작성 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <!-- web application을 위해 가장 기본이 되는
+            spring-boot-starter-web을 추가-->
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- 해당 application을 빌드할때 사용될 플러그인들 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
