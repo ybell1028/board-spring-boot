@@ -30,8 +30,9 @@ public class Post {
         this.content = content;
     }
 
-    /*보통 JPA 같은 경우 자바 스펙의 상당부븐을 따르므로, POJO(Plain Old Java Object) 규약을 따라서 작성하게 된다.
-    해당 방식을 따르지 않는경우. ORM이 변환을 제대로 수행하지 못한다.*/
+    /* 보통 JPA 같은 경우 자바 스펙의 상당부분을 따르므로,
+    POJO(Plain Old Java Object) 규약을 따라서 작성하게 된다.
+    해당 방식을 따르지 않는경우. ORM이 변환을 제대로 수행하지 못한다. */
 
     @Override
     public boolean equals(Object o){

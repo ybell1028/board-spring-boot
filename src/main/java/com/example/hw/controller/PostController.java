@@ -1,11 +1,14 @@
 package com.example.hw.controller;
 
 import com.example.hw.entity.Post;
+import com.example.hw.errhandler.NoItemError;
+import com.example.hw.errhandler.PathFormatError;
 import com.example.hw.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /*데이터를 반환하는 컨트롤러
@@ -41,8 +44,18 @@ public class PostController {
         return post.get();
     }
 
+    //RequestMapping(Method=RequestMethod.Post)과 동일
+    @PostMapping("/post")
+    public Post createPost(@RequestBody Post post){
+        Post newPost = postRepository.save(post);
+
+        System.out.println("끼에엑");
+
+        return newPost;
+    }
+
     // RequestMapping(Method=RequestMethod.POST)과 동일
-    @PostMapping("/post/{id}")
+    @PutMapping("/post/{id}")
     public Post updatePost(@PathVariable String id, @RequestBody Post newPost){
         // @RequestBody - 요청으로 들어온 데이터(Json, XML)를 클래스나 model로 매핑
         Long postID = Long.parseLong(id);
@@ -60,14 +73,10 @@ public class PostController {
         return post.get();
     }
 
-    @PutMapping("/post")
-    public Post createPost(@RequestBody Post post){
-        Post newPost = postRepository.save(post);
-
-        System.out.println("끼에엑");
-
-        return newPost;
-    }
+    /* @RequestBody Post post 부분을 보면
+    어떻게 Post를 저렇게 바로 넘겨받을수 있지? 라고 생각 할수 있지만,
+    사실은 내부적으로 스프링의 HTTPMessageConverter에 의해 JSON과,
+    객체간의 변환이 수행되어서 저렇게 사용할 수 있는것이다. */
 
     @DeleteMapping("/post/{id}")
     public String deletePost(@PathVariable String id){
@@ -76,9 +85,4 @@ public class PostController {
 
         return "Delete Success!";
     }
-
-    /* @RequestBody Post post 부분을 보면
-    어떻게 Post를 저렇게 바로 넘겨받을수 있지? 라고 생각 할수 있지만,
-    사실은 내부적으로 스프링의 HTTPMessageConverter에 의해 JSON과,
-    객체간의 변환이 수행되어서 저렇게 사용할 수 있는것이다. */
 }
