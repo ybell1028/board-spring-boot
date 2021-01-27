@@ -3,3 +3,4 @@
 /target/node
 /target/spring-boot-board-1.0-SNAPSHOT.jar
 /target/spring-boot-board-1.0-SNAPSHOT.jar.original
+/out
