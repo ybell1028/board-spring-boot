@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="C:\Users\Admin\Documents\My_GitHub\board-spring-boot\target/classes/public">
+    <fileset dir="C:\Users\Admin\Documents\My_GitHub\board-spring-boot/board-react-app/build"/>
+  </copy>
+</target>
+</project>
